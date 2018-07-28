@@ -7,6 +7,7 @@ env: &env
   DIND_CLUSTER_VERSION: "1.10"
   PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${HOME}/.kubeadm-dind-cluster
 
+version: 2
 jobs:
   build:
     <<: *defaults
