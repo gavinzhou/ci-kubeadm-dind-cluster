@@ -1,6 +1,7 @@
 defaults: &defaults
   docker:
-    - image: ubuntu:16.04
+    - image: google/cloud-sdk
+
   working_directory: ~/kubeadm-dind-cluster
 
 env: &env
