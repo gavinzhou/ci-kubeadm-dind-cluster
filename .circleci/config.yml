@@ -9,7 +9,7 @@ env: &env
   PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${HOME}/.kubeadm-dind-cluster
 
 jobs:
-  test:
+  build:
     <<: *defaults
     environment:
       <<: *env
