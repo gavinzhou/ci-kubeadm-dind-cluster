@@ -1,0 +1,31 @@
+
+defaults: &defaults
+  docker:
+    - image: ubuntu:16.04
+  working_directory: ~/kubeadm-dind-cluster
+
+env: &env
+  DIND_CLUSTER_VERSION: "1.10"
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${HOME}/.kubeadm-dind-cluster
+
+jobs:
+  test:
+    <<: *defaults
+    environment:
+      <<: *env
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          command: |
+            curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+            mkdir -p .bin; mv ./kubectl .bin/kubectl && chmod +x .bin/kubectl
+            curl -Lo dind-cluster-v${DIND_CLUSTER_VERSION}.sh https://cdn.rawgit.com/kubernetes-sigs/kubeadm-dind-cluster/master/fixed/dind-cluster-v${DIND_CLUSTER_VERSION}.sh 
+            chmod +x dind-cluster-v${DIND_CLUSTER_VERSION}.sh && ./dind-cluster-v${DIND_CLUSTER_VERSION}.sh up
+
+      - run:
+          command: |
+            kubectl get nodes
+            kubectl run circleci-example --image=redis
+            kubectl get rc
+            kubectl get pods
