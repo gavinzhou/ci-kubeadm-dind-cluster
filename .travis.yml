@@ -18,6 +18,6 @@ install:
 
 script:
   - kubectl get nodes
-  - kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/storage/redis/redis-controller.yaml
+  - kubectl run travis-example --image=redis
   - kubectl get rc
   - kubectl get pods
