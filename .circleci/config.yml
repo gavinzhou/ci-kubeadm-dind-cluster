@@ -31,6 +31,7 @@ jobs:
 
       - run:
           command: |
+            .circleci/portforward.sh 8080
             kubectl get nodes
             kubectl run circleci-example --image=redis
             kubectl get rc
