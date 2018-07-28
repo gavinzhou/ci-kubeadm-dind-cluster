@@ -4,7 +4,7 @@ defaults: &defaults
   working_directory: ~/kubeadm-dind-cluster
 
 env: &env
-  DIND_CLUSTER_VERSION: "1.10"
+  DIND_CLUSTER_VERSION: "1.11"
   PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${HOME}/.kubeadm-dind-cluster
 
 version: 2
