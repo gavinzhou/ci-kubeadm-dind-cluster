@@ -1,4 +1,3 @@
-
 defaults: &defaults
   docker:
     - image: ubuntu:16.04
