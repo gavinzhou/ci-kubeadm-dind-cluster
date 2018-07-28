@@ -21,3 +21,6 @@ script:
   - kubectl run travis-example --image=redis
   - kubectl get rc
   - kubectl get pods
+
+notifications:
+  email: false
