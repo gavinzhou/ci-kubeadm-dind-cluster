@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - DIND_CLUSTER_VERSION="1.111"
+    - DIND_CLUSTER_VERSION="1.11"
 go:
   - "1.10"
 install:
